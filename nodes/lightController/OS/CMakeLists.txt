@@ -6,6 +6,6 @@ add_library(lightController_OsLib
 # add_subdirectory(MCal)
 # add_subdirectory(Faults)
 
-# target_link_libraries(lightController_OsLib
-#
-# )
+target_link_libraries(lightController_OsLib
+    picoOS_lib
+)

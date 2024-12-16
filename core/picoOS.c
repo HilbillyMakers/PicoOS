@@ -182,3 +182,15 @@
 // #endif
 //     return 0;
 // }
+
+#include "picoOS.h"
+
+uint8_t init_picoOS(void)
+{
+  setupCanController();
+}
+
+uint8_t run_picoOS(void)
+{
+
+}

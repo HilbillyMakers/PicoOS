@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "core/Hardware/SPI/MCP2515",
+		"source" : "core/Hardware/SPI/MCP2515"
+	}
+}

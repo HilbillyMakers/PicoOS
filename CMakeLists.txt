@@ -33,6 +33,5 @@ if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
 endif()
 
 
-# Nodes have to be added before the core. no idea why, but the pioasm fails otherwise
-add_subdirectory(nodes)
 add_subdirectory(core)
+add_subdirectory(nodes)

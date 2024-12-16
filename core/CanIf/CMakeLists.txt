@@ -9,4 +9,5 @@ target_link_libraries(canIf_Lib
         pico_stdlib 
         hardware_spi 
         hardware_dma
+        mcp2515_spi_lib
         )
