@@ -184,13 +184,36 @@
 // }
 
 #include "picoOS.h"
+#include <stdbool.h>
+#include "CanIf/canIf.h"
 
-uint8_t init_picoOS(void)
+picoOS_config* activeConfig;
+
+bool picoOS_isInitialized = false;
+
+uint8_t init_picoOS(picoOS_config* config)
 {
-  setupCanController();
+    uint8_t retVal = 0u;
+    activeConfig = config;
+
+
+    picoOS_isInitialized = true;
+
+    return retVal;
 }
 
 uint8_t run_picoOS(void)
 {
+    uint8_t retVal = 0u;
+    if(true == picoOS_isInitialized)
+    {
+        /* Run scheduler */
 
+    }
+    else
+    {
+        /* Report initialization error */
+    }
+
+    return retVal;
 }

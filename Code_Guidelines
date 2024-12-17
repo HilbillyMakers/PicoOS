@@ -1,0 +1,6 @@
+#1 Tab is 4 spaces
+#2 The "{" is placed below the function, struct, enum, etc
+#3 Code should be readable without scrolling to the right on a 1920*1080 screen
+#4 Clusters of operations (assigning struct variables, declaring a series of related functions), should be column aligned
+#5 Temporary comments are preceded by '//', permanent comments should be inside '/* */' tags
+#6 Function scoped variables are declared at the begining of the function

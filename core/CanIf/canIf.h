@@ -3,9 +3,13 @@
 
 #include <stdint.h>
 
-uint8_t setupCanController( uint8_t csPin,        uint8_t   clkPin, 
-                            uint8_t misoPin,      uint8_t   mosiPin, 
-                            uint8_t frequencyMhz, uint32_t  baudrate
-                          );
+typedef enum
+{
+    CAN_SPI_CLUSTER_UNKNOWN,
+
+    CAN_SPI_CLUSTER_0,
+    CAN_SPI_CLUSTER_1,
+    
+} CAN_SPI_ClusterID;
 
 #endif
