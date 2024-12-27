@@ -2,7 +2,8 @@
 #define WS2812_T
 
 #include <stdio.h>
-#include "pico/stdlib.h"
+#include "ws2812_rgbPatterns.h"
+
 #define BUTTON_PRESSED  true
 #define BUTTON_RELEASED false
 
@@ -19,7 +20,7 @@ typedef enum
 typedef enum
 {
     SM_WS2812_E_OK,
-    SM_WS2812_E_PIO_PROGRAM,
+    SM_WS2812_E_PIO_PROGRAM,        //The PIO program could not be loaded into memory at the requested offset
     SM_WS2812_E_UNINITIALIZED,
     SM_WS2812_E_UNKNOWN_STATE,
     SM_WS2812_E_UNKNOWN_REQUEST,
@@ -48,29 +49,21 @@ typedef enum
     SM_WS2812_R_RESET
 }ws2812_sm_request;
 
-typedef struct
-{
-    uint8_t     patternSize;
-    uint8_t     patternNumber;
-    uint32_t    refreshRate;
-    uint32_t  **patternList;
-} ws2812_sm_pattern;
-
 typedef struct 
 {
     uint8_t                     smID;
     uint8_t                     pin;
 
-    uint16_t                    currentPatternIndex;
+    uint16_t                    ledNumber;
+    uint8_t                     currentPatternIndex;
+    uint16_t*                   patternBuffer;
 
-    ws2812_sm_pattern          *patternLocation;
-    ws2812_sm_notificationType  notificationFlag;
+    ws2812_sm_notificationType  notificationType;
     ws2812_sm_state             sm_state;
     ws2812_sm_request           sm_request;
 }ws2812_sm;
 
-ws2812_sm_error init_ws2812(ws2812_sm* sm_data);
-
-void ws2812_loadPattern(int sm, uint32_t *pattern, uint16_t pixelNumber);
+ws2812_sm_error init_ws2812         (ws2812_sm* sm_data);
+ws2812_sm_error ws2812_loadPattern  (ws2812_sm* sm_data);
 
 #endif

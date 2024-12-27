@@ -50,7 +50,7 @@ static const struct pio_program quadrature_encoder_program = {
     .instructions = quadrature_encoder_program_instructions,
     .length = 24,
     .origin = 0,
-    .pio_version = quadrature_encoder_pio_version,
+    .pio_version = 0,
 #if PICO_PIO_VERSION > 0
     .used_gpio_ranges = 0x0
 #endif

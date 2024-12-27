@@ -1,4 +1,10 @@
-#include "lightControllerSM.h"
+#include "lightSwitchSM.h"
+#include <stdbool.h>
+
+bool     pushButtonState_ipc;
+uint32_t pushButtonTimePressed_ipc;
+uint32_t encoderPosition_ipc;
+
 
 void init_nodeTemplateSM(void)
 {

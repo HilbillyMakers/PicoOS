@@ -3,10 +3,13 @@
 #include "pico/stdlib.h"
 #include "hardware/pwm.h"
 #include "hardware/clocks.h"
+#include "math.h"
 
 #define COLD_WHITE_LED_PIN              3u
 #define COLD_WHITE_LED_FREQUENCY_HZ     100000u
 #define COLD_WHITE_LED_WRAP_SIZE        __UINT16_MAX__
+#define COLD_WHITE_LED_GAMMA_EXPONENT   (float)(1/2.2)  /* Calculate the inverse of the gamma to avoid using the n root function */
+#define COLD_WHITE_LED_MAX_WRAP         65535
 
 void init_coldWhiteLED(void)
 {
@@ -27,12 +30,27 @@ void init_coldWhiteLED(void)
 
 void run_coldWhiteLED(void)
 {
+    static float    current_ColdWhite;
     static uint16_t currentDutyCycle;
 
-    if(currentDutyCycle != requested_coldWhite_DutyCycle)
+    if(current_ColdWhite != requested_ColdWhite)
     {
-        pwm_set_gpio_level(COLD_WHITE_LED_PIN, requested_coldWhite_DutyCycle);
-        currentDutyCycle = requested_coldWhite_DutyCycle;
+        /* 
+        Gamma correction - quick explanation
+        Gamma correction allows to fit a linear percentage input into a logarithmic output, in order to fit human perception
+
+        The main idea of the function is to turn a linear multiplier, like 50% a.k.a (0.5) into something closer to what 
+        the human eye perceives as 50% of the max intensity, which is closer to (0.23). This is coupled with a cap on the 
+        maximal intensity (the point when increasing the time the LEDs are on offers no lighting improvements), by multiplying
+        this value with the resulting gamma multiplier
+        */
+        currentDutyCycle = (COLD_WHITE_LED_MAX_WRAP * pow(requested_ColdWhite, COLD_WHITE_LED_GAMMA_EXPONENT));
+        
+        /* Set the new duty cycle */
+        pwm_set_gpio_level(COLD_WHITE_LED_PIN, currentDutyCycle);
+        
+        /* Remember the last requested value */
+        current_ColdWhite = requested_ColdWhite;
     }
     else
     {

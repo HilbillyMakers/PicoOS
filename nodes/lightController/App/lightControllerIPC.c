@@ -1,9 +1,13 @@
 #include "lightControllerIPC.h"
+float     requested_ColdWhite;
+float     requested_WarmWhite;
 
-uint16_t requested_coldWhite_DutyCycle;
-uint16_t requested_warmWhite_DutyCycle;
+uint8_t   CanRequest_whiteBalance;
+uint8_t   CanRequest_whiteIntensity;
+
 
 ///TODO: bind the above variables to the canIf interface
+
 
 /* 
 

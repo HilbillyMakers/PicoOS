@@ -3,9 +3,11 @@ add_library(picoOS_lib
     picoOS.c
 )
 
-add_subdirectory(CanIf)
 add_subdirectory(Hardware)
+add_subdirectory(CanIf)
 
-target_link_libraries(picoOS_lib
+target_link_libraries(picoOS_lib PUBLIC
+    osHardwareLib
     canIf_Lib
+    pio_quadrature_encoder
 )   
