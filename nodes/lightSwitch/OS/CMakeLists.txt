@@ -1,4 +1,4 @@
-add_library(lightController_OsLib
+add_library(lightSwitch_OsLib
     os.c
 )
 

@@ -1,14 +1,14 @@
 add_executable(lightSwitchBin
-    lightController.h    
-    lightController.c    
+    lightSwitch.h    
+    lightSwitch.c    
 )
 
 add_subdirectory(App)
 add_subdirectory(OS)
 
 target_link_libraries(lightSwitchBin
-    lightController_OsLib
-    lightController_AppLib
+    lightSwitch_OsLib
+    lightSwitch_AppLib
 )
 
 # create map/bin/hex file etc.

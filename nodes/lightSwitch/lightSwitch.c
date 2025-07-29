@@ -1,4 +1,4 @@
-#include "lightController.h"
+#include "lightSwitch.h"
 
 int main (void)
 {

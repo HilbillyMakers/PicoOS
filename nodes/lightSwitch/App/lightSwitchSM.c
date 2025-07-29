@@ -1,4 +1,4 @@
-#include "lightControllerSM.h"
+#include "lightSwitchSM.h"
 
 void init_nodeTemplateSM(void)
 {
