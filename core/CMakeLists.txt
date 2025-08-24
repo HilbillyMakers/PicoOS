@@ -4,3 +4,4 @@ add_library(picoOS_lib
 )
 
 add_subdirectory(Hardware)
+add_subdirectory(SystemServices)
