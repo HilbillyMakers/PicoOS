@@ -1,6 +1,6 @@
 add_library(WarmWhiteLED_lib
-    src/warmWhiteLED.h
-    src/warmWhiteLED.c
+    src/CDD_MosfetLed_WarmWhite.h
+    src/CDD_MosfetLed_WarmWhite.c
 )
 
 target_link_libraries(WarmWhiteLED_lib

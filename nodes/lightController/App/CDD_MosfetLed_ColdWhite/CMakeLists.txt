@@ -1,6 +1,6 @@
 add_library(ColdWhiteLED_lib
-    src/coldWhiteLED.h
-    src/coldWhiteLED.c
+    src/CDD_MosfetLed_ColdWhite.h
+    src/CDD_MosfetLed_ColdWhite.c
 )
 
 target_link_libraries(ColdWhiteLED_lib

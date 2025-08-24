@@ -1,0 +1,14 @@
+General:
+  - TAB is equal to 4 spaces
+  - blank line separates code blocks
+
+
+Code arrangement:
+  - assignment operator (=) column aligned to the nearest TAB
+  - "{" and "}" operators are placed on new lines
+  - (when reasonable) align symbol names to the nearest TAB
+  - multiple boolean operations (usually inside "if" statements) should be aligned to eachother on new lines
+  - (when reasonable) align function parameter container "()" to start from the nearest TAB, aligned with revious functions
+
+Module naming:
+  - CDD - complex device driver - non-standard device configuration
