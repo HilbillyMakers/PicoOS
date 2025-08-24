@@ -7,8 +7,8 @@
 #define WARM_WHITE_LED_FREQUENCY_HZ     100000u
 #define WARM_WHITE_LED_WRAP_SIZE        __UINT16_MAX__
 
-uint16_t requested_coldWhite_DutyCycle;
-uint16_t current_coldWhite_DutyCycle;
+uint16_t requested_warmWhite_DutyCycle;
+uint16_t current_warmWhite_DutyCycle;
 
 static void pwm_get_gpio_level(uint8_t pin, uint16_t *destination)
 {
@@ -29,7 +29,7 @@ static void pwm_get_gpio_level(uint8_t pin, uint16_t *destination)
     *destination = ((pwm_hw->slice[slice_num].cc) & (channel ? PWM_CH0_CC_B_BITS : PWM_CH0_CC_A_BITS));
 }
 
-void    init_coldWhiteLED(void)
+void    init_warmWhiteLED(void)
 {
     // Tell the LED pin that the PWM is in charge of its value.
     gpio_set_function(WARM_WHITE_LED_PIN, GPIO_FUNC_PWM);
@@ -51,14 +51,14 @@ void    init_coldWhiteLED(void)
     pwm_init(slice_num, &config, true);
 }
 
-void    run_coldWhiteLED(void)
+void    run_warmWhiteLED(void)
 {
-    if(current_coldWhite_DutyCycle != requested_coldWhite_DutyCycle)
+    if(current_warmWhite_DutyCycle != requested_warmWhite_DutyCycle)
     {
-        pwm_set_gpio_level(WARM_WHITE_LED_PIN, requested_coldWhite_DutyCycle);
-        pwm_get_gpio_level(WARM_WHITE_LED_PIN, current_coldWhite_DutyCycle);
+        pwm_set_gpio_level(WARM_WHITE_LED_PIN, requested_warmWhite_DutyCycle);
+        pwm_get_gpio_level(WARM_WHITE_LED_PIN, &current_warmWhite_DutyCycle);
 
-        if(current_coldWhite_DutyCycle != requested_coldWhite_DutyCycle)
+        if(current_warmWhite_DutyCycle != requested_warmWhite_DutyCycle)
         {
             ///Report PWM update error
         }

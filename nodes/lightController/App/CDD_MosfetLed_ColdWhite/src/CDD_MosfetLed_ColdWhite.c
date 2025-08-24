@@ -56,7 +56,7 @@ void    run_coldWhiteLED(void)
     if(current_coldWhite_DutyCycle != requested_coldWhite_DutyCycle)
     {
         pwm_set_gpio_level(COLD_WHITE_LED_PIN, requested_coldWhite_DutyCycle);
-        pwm_get_gpio_level(COLD_WHITE_LED_PIN, current_coldWhite_DutyCycle);
+        pwm_get_gpio_level(COLD_WHITE_LED_PIN, &current_coldWhite_DutyCycle);
 
         if(current_coldWhite_DutyCycle != requested_coldWhite_DutyCycle)
         {
