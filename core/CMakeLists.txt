@@ -4,3 +4,9 @@ add_library(picoOS_lib
 )
 
 add_subdirectory(Hardware)
+add_subdirectory(CanIf)
+
+target_link_libraries(picoOS_lib
+    canIf_Lib
+
+)
