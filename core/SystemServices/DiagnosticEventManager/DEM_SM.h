@@ -27,9 +27,14 @@ typedef enum
 
 typedef struct
 {
-    DEM_Event_State state;
-    uint8_t prefail_number;
-    uint8_t prefail_limit;
+    uint8_t             ID;
+    DEM_Event_State     state;
+    DEM_Event_Update    updatedState;
+    uint8_t             prefail_number;
+    uint8_t             prefail_limit;
 } DEM_Event;
+
+void init_DEM_SM();
+void run_DEM_SM ();
 
 #endif
